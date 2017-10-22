@@ -1,34 +1,50 @@
-// Select color input
-// Select size input
 
-// When size is submitted by the user, call makeGrid()
 var width = document.getElementById("input_width").value;
 var height = document.getElementById("input_height").value;
 var color = document.getElementById("colorPicker").value;
 var pixel = document.getElementById("pixel_canvas");
 var picker = document.getElementById("sizePicker");
 
-picker.addEventListener("submit", function(e) {
-	//console.log(e);
+document.getElementById("sizePicker").addEventListener("submit", function (e) {
 	e.preventDefault();
-	this.submit();
+	window.onsubmit = makeGrid;
 })
 
-function makeGrid(width, height, color) {
-	while (width > 1) {
-		pixel.deleteRow(width);
-	for (var i = 0; i<=width; i++) {
+//function callSubmit(h) {
+//	document.getElementById("sizePicker").addEventListener("submit", makeGrid);
+//}
+
+
+
+
+
+//function callSubmit() {
+//	var size = $( "#sizePicker");
+//	size.submit(function (e) {
+//		e.preventDefault();
+//	})
+//}
+
+
+
+function deleteRow(a) {
+    var x = a.parentNode.parentNode.rowIndex;
+    pixel.deleteRow(x);
+}
+
+function makeGrid(a, b, c) {
+	for (var i = 0; i<=a; i++) {
 		var row = pixel.insertRow(i);
-			for (var x = 0; x <=height; x++) {
+			for (var x = 0; x <=b; x++) {
 				var cell = row.insertCell(x);
 					cell.addEventListener("click", function() {
-						this.style.backgroundColor = color;
+						this.style.backgroundColor = c;
 					})
 			}
 	}
-	}
 }
 
-
-console.log(makeGrid(width, height, color));
- 
+makeGrid(width, height, color);
+//testGrid();
+//width = 10;
+//height = 10;
