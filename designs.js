@@ -1,32 +1,28 @@
-//Defining global variables for DOM elements//
-var width = document.getElementById("input_width").value;
-var height = document.getElementById("input_height").value;
-var color = document.getElementById("colorPicker").value;
-var pixel = document.getElementById("pixel_canvas");
-var picker = document.getElementById("sizePicker");
 
 //submit function to click on Grid height and Grid width, and call makeGrid function//
-picker.addEventListener("submit", function (e) {
+document.addEventListener("submit", function (e) {
+	//console.log(e);
 	e.preventDefault();
-	function inputHeight () {
-	height.click();
-	}
-	function inputWidth () {
-	width.click();
-	}
-	makeGrid(width, height, color);
+	makeGrid();
+	while (row.length > width + 1 && cell.length > height + 1)	{
+		console.log(pixel.deleteRow(width));
+	}	
 })
 
 
-//makeGrid function to draw grid and add color to cells//
-function makeGrid(a, b, c) {
-	for (var i = 0; i<=a; i++) {
-		var row = pixel.insertRow(i);
-			for (var x = 0; x <=b; x++) {
-				var cell = row.insertCell(x);
-				cell.addEventListener("click", function() {
-					this.style.backgroundColor = c;
+//makeGrid function to draw grid and add color to cells
+function makeGrid() {
+	var pixel = document.getElementById("pixel_canvas");
+	var width = document.getElementById("input_width").value;
+	var height = document.getElementById("input_height").value;
+	var color = document.getElementById("colorPicker").value;
+	for (var i=0; i<=width; i++) {
+		row = pixel.insertRow(i);
+			for (var x=0; x<=height; x++) {
+				cell = row.insertCell(x);
+					cell.addEventListener("click", function() {
+						this.style.backgroundColor = color;
 					})
+				}
 			}
 	}
-}
