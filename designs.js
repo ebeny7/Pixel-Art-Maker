@@ -1,6 +1,6 @@
 
 //submit function to click on Grid height and Grid width, and call makeGrid function//
-document.addEventListener("submit", function (e) {
+document.getElementById("sizePicker").addEventListener("submit", function (e) {
 	//console.log(e);
 	e.preventDefault();
 	makeGrid();
@@ -17,12 +17,12 @@ function makeGrid() {
 	var height = document.getElementById("input_height").value;
 	var color = document.getElementById("colorPicker").value;
 	for (var i=0; i<=width; i++) {
-		row = pixel.insertRow(i);
-			for (var x=0; x<=height; x++) {
-				cell = row.insertCell(x);
-					cell.addEventListener("click", function() {
-						this.style.backgroundColor = color;
-					})
-				}
+		row = pixel.insertRow(i);//creating empty tr elements
+		for (var x=0; x<=height; x++) {
+			cell = row.insertCell(x);//inserting cells into td elements
+				cell.addEventListener("click", function() {
+					this.style.backgroundColor = color;
+				})
 			}
+		}
 	}
