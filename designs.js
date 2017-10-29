@@ -10,9 +10,9 @@ document.getElementById("sizePicker").addEventListener("submit", function (e) {
 
 //makeGrid function to draw grid and add color to cells
 function makeGrid() {
-	let pixel = document.getElementById("pixel_canvas");
-	var width = document.getElementById("input_width").value;
-	var height = document.getElementById("input_height").value;
+	const pixel = document.getElementById("pixel_canvas");
+	let width = document.getElementById("input_width").value;
+	let height = document.getElementById("input_height").value;
 	for (var i=0; i<=height; i++) {
 		var row = pixel.insertRow(i);//creating empty tr elements
 		for (var x=0; x<=width; x++) {
